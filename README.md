@@ -47,18 +47,18 @@ Construir um ortomosaico do Espírito Santo reunindo cenas de satélite, registr
 
 ## Fluxo de trabalho
 
-### 1. Coleta de imagens
+#### 1. Coleta de imagens
 Download e organização das cenas orbitais selecionadas.
 
-### 2. Análise das imagens
+#### 2. Análise das imagens
 Identificação de área de cobertura, nuvens, qualidade e resolução.
 
-### 3. Ortorretificação
+#### 3. Ortorretificação
 Correções geométricas e radiométricas iniciais.
 
-### 4. Posicionamento das imagens
+#### 4. Posicionamento das imagens
 Registro geométrico e alinhamento entre cenas.
 
-### 5. Mosaico e fusão
+#### 5. Mosaico e fusão
 Aplicação dos algoritmos de costura e geração do ortomosaico final.
 
