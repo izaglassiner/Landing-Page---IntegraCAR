@@ -1,99 +1,64 @@
-# Título do projeto
+# SIGMA - Sistema Integrado de Geração de Mosaicos Aeroespaciais
 
-Um parágrafo da descrição do projeto vai aqui
+Uma abordagem baseada em fusão de imagens e correspondência com imagens de satélite
 
-## 🚀 Começando
+## Descrição
 
-Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
-
-Consulte **[Implantação](#-implanta%C3%A7%C3%A3o)** para saber como implantar o projeto.
-
-### 📋 Pré-requisitos
-
-De que coisas você precisa para instalar o software e como instalá-lo?
-
-```
-Dar exemplos
-```
-
-### 🔧 Instalação
-
-Uma série de exemplos passo-a-passo que informam o que você deve executar para ter um ambiente de desenvolvimento em execução.
-
-Diga como essa etapa será:
-
-```
-Dar exemplos
-```
-
-E repita:
-
-```
-Até finalizar
-```
-
-Termine com um exemplo de como obter dados do sistema ou como usá-los para uma pequena demonstração.
-
-## ⚙️ Executando os testes
-
-Explicar como executar os testes automatizados para este sistema.
-
-### 🔩 Analise os testes de ponta a ponta
-
-Explique que eles verificam esses testes e porquê.
-
-```
-Dar exemplos
-```
-
-### ⌨️ E testes de estilo de codificação
-
-Explique que eles verificam esses testes e porquê.
-
-```
-Dar exemplos
-```
-
-## 📦 Implantação
-
-Adicione notas adicionais sobre como implantar isso em um sistema ativo
-
-## 🛠️ Construído com
-
-Mencione as ferramentas que você usou para criar seu projeto
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - O framework web usado
-* [Maven](https://maven.apache.org/) - Gerente de Dependência
-* [ROME](https://rometools.github.io/rome/) - Usada para gerar RSS
-
-## 🖇️ Colaborando
-
-Por favor, leia o [COLABORACAO.md](https://gist.github.com/usuario/linkParaInfoSobreContribuicoes) para obter detalhes sobre o nosso código de conduta e o processo para nos enviar pedidos de solicitação.
-
-## 📌 Versão
-
-Nós usamos [SemVer](http://semver.org/) para controle de versão. Para as versões disponíveis, observe as [tags neste repositório](https://github.com/suas/tags/do/projeto). 
-
-## ✒️ Autores
-
-Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
-
-* **Um desenvolvedor** - *Trabalho Inicial* - [umdesenvolvedor](https://github.com/linkParaPerfil)
-* **Fulano De Tal** - *Documentação* - [fulanodetal](https://github.com/linkParaPerfil)
-
-Você também pode ver a lista de todos os [colaboradores](https://github.com/usuario/projeto/colaboradores) que participaram deste projeto.
-
-## 📄 Licença
-
-Este projeto está sob a licença (sua licença) - veja o arquivo [LICENSE.md](https://github.com/usuario/projeto/licenca) para detalhes.
-
-## 🎁 Expressões de gratidão
-
-* Conte a outras pessoas sobre este projeto 📢;
-* Convide alguém da equipe para uma cerveja 🍺;
-* Um agradecimento publicamente 🫂;
-* etc.
+Este repositório reúne o pipeline, os algoritmos e os experimentos para a geração de um ortomosaico contínuo e georreferenciado do estado do Espírito Santo, utilizando exclusivamente imagens de satélite.
+O projeto explora técnicas modernas de image stitching (costura de imagens), com foco em reduzir a dependência de Ground Control Points (GCPs). O objetivo é produzir um mosaico robusto e adequado para aplicações ambientais, fundiárias, cartográficas e acadêmicas.
 
 
----
-⌨️ com ❤️ por [Armstrong Lohãns](https://gist.github.com/lohhans) 😊
+### Motivação
+
+A consolidação de um ortomosaico estadual de alta qualidade é essencial para:
+  - apoiar estudos territoriais e ambientais;
+  - uniformizar análises cartográficas em nível estadual;
+  - reduzir dependência de bases comerciais e de alto custo;
+  - facilitar visualização e interpretação de áreas rurais e urbanas;
+  - permitir comparações temporais para monitoramento ambiental.
+
+No entanto, imagens orbitais podem variar entre si em resolução, iluminação, geometria e data de captura.
+Este projeto busca superar esses desafios por meio de técnicas modernas de fusão, alinhamento e costura de imagens, garantindo que o mosaico final seja uniforme e geometricamente confiável.
+
+
+### Objetivos
+
+#### Objetivo Geral
+Construir um ortomosaico do Espírito Santo reunindo cenas de satélite, registradas e fundidas com métodos robustos de visão computacional.
+
+#### Objetivos Específicos
+- Implementar os três algoritmos de fusão de imagens:
+
+    - Weighted Average (WA)
+    - Maxflow/Mincut
+    - Laplacian Pyramid (LAP)
+
+- Aplicar os algoritmos às imagens do satélite CBERS-4A após pré-processamento adequado.
+- Gerar imagens compostas (mosaicos) a partir da fusão das cenas.
+- Avaliar as imagens resultantes utilizando as seguintes métricas:
+    - PSNR (Peak Signal-to-Noise Ratio)
+    - SSIM (Structural Similarity Index)
+    - MI (Mutual Information)
+    - Coeficiente de Correlação (CC)
+    - Tempo de execução dos algoritmos
+
+- Comparar o desempenho dos métodos a partir da análise dos resultados quantitativos e qualitativos obtidos.
+
+
+## Fluxo de trabalho
+
+### 1. Coleta de imagens
+Download e organização das cenas orbitais selecionadas.
+
+### 2. Análise das imagens
+Identificação de área de cobertura, nuvens, qualidade e resolução.
+
+### 3. Ortorretificação
+Correções geométricas e radiométricas iniciais.
+
+### 4. Posicionamento das imagens
+Registro geométrico e alinhamento entre cenas.
+
+### 5. Mosaico e fusão
+Aplicação dos algoritmos de costura e geração do ortomosaico final.
+
